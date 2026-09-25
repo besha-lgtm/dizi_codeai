@@ -1,14 +1,189 @@
-
 <div class="layout">
 
-    <app-sidebar></app-sidebar>
+  <!-- SIDEBAR -->
+  <app-sidebar></app-sidebar>
 
-    <div class="right-section">
 
-        <app-header></app-header>
+  <!-- RIGHT SECTION -->
+  <div class="right-section">
 
-        <router-outlet></router-outlet>
+    <!-- HEADER -->
+    <app-header></app-header>
+
+
+    <!-- CONTENT -->
+    <div class="content-area">
+
+      <div class="codeai-container">
+
+
+        <!-- INTRO SCREEN -->
+        <div
+          class="intro-section"
+          *ngIf="!isChatOpen">
+
+          <div class="intro-icon">
+            <i class="pi pi-code"></i>
+          </div>
+
+          <h1>Code AI Auditor</h1>
+
+          <p>
+            Let AI analyze your Git repository, identify code issues,
+            security risks, performance problems, and improvement
+            opportunities.
+          </p>
+
+          <button
+            class="start-btn"
+            (click)="toggleChat()">
+
+            <i class="pi pi-comments"></i>
+
+            Start Code Audit
+
+          </button>
+
+        </div>
+
+
+        <!-- CHAT -->
+        <div
+          class="chat-interface"
+          *ngIf="isChatOpen">
+
+
+          <!-- CHAT HEADER -->
+          <div class="chat-header">
+
+            <div>
+              <h3>Code AI Auditor</h3>
+
+              <span>
+                AI-powered code review
+              </span>
+            </div>
+
+            <button
+              class="close-btn"
+              (click)="toggleChat()">
+
+              <i class="pi pi-times"></i>
+
+            </button>
+
+          </div>
+
+
+          <!-- CHAT MESSAGES -->
+          <div
+            class="chat-body"
+            #chatBody>
+
+            <div
+              class="message"
+              *ngFor="let message of messages"
+              [ngClass]="message.sender">
+
+              <div class="message-avatar">
+
+                <i
+                  class="pi"
+                  [ngClass]="
+                    message.sender === 'ai'
+                    ? 'pi-sparkles'
+                    : 'pi-user'
+                  ">
+                </i>
+
+              </div>
+
+              <div class="message-content">
+
+                <div
+                  *ngIf="message.text"
+                  class="message-text">
+
+                  {{ message.text }}
+
+                </div>
+
+
+                <!-- OPTIONS -->
+                <div
+                  class="options"
+                  *ngIf="message.options">
+
+                  <button
+                    *ngFor="let option of message.options"
+                    (click)="selectOption(option)"
+                    class="option-btn">
+
+                    {{ option }}
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- TYPING -->
+            <div
+              class="message ai"
+              *ngIf="isTyping">
+
+              <div class="message-avatar">
+
+                <i class="pi pi-sparkles"></i>
+
+              </div>
+
+              <div class="typing">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- INPUT -->
+          <div class="chat-footer">
+
+            <input
+              type="text"
+              [(ngModel)]="userInput"
+              (keyup.enter)="sendMessage()"
+              [disabled]="isTyping"
+              placeholder="Type your answer..."
+              class="chat-input">
+
+
+            <button
+              class="send-btn"
+              (click)="sendMessage()"
+              [disabled]="!userInput.trim() || isTyping">
+
+              <i class="pi pi-send"></i>
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+      </div>
 
     </div>
+
+  </div>
 
 </div>
