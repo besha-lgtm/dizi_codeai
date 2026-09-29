@@ -10,7 +10,26 @@ import {
   ProgressBar,
   ProgressBarModule
 } from "./chunk-26NB2PBF.js";
+import {
+  Button,
+  ButtonDirective,
+  ButtonModule
+} from "./chunk-A23TAAXE.js";
+import "./chunk-NMRUKHPM.js";
 import "./chunk-YOO7LNXO.js";
+import {
+  TimesIcon
+} from "./chunk-P5WWGHQJ.js";
+import {
+  Ripple,
+  RippleModule
+} from "./chunk-JKLXLI5N.js";
+import "./chunk-VSVLYWII.js";
+import "./chunk-BO77RBY7.js";
+import {
+  BaseIcon
+} from "./chunk-55APRCH2.js";
+import "./chunk-3EAGWDPE.js";
 import {
   DomSanitizer
 } from "./chunk-QY6XZAHG.js";
@@ -19,25 +38,6 @@ import {
   HttpEventType
 } from "./chunk-XPB3GU6B.js";
 import "./chunk-7T4RPRS5.js";
-import {
-  Button,
-  ButtonDirective,
-  ButtonModule
-} from "./chunk-2WV5676K.js";
-import "./chunk-NMRUKHPM.js";
-import {
-  TimesIcon
-} from "./chunk-P5WWGHQJ.js";
-import "./chunk-VSVLYWII.js";
-import {
-  Ripple,
-  RippleModule
-} from "./chunk-JKLXLI5N.js";
-import {
-  BaseIcon
-} from "./chunk-55APRCH2.js";
-import "./chunk-BO77RBY7.js";
-import "./chunk-3EAGWDPE.js";
 import {
   DomHandler
 } from "./chunk-BUGEQH7Q.js";

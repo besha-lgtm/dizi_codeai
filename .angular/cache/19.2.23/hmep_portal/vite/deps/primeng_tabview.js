@@ -1,11 +1,11 @@
 import {
-  Tooltip,
-  TooltipModule
-} from "./chunk-O5NEOPEK.js";
-import {
   ChevronLeftIcon,
   ChevronRightIcon
 } from "./chunk-7XNXBSKN.js";
+import {
+  Tooltip,
+  TooltipModule
+} from "./chunk-O5NEOPEK.js";
 import {
   TimesIcon
 } from "./chunk-P5WWGHQJ.js";

@@ -1,10 +1,10 @@
 import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-HFEV7BC3.js";
-import {
   AutoFocus,
   AutoFocusModule
 } from "./chunk-BO77RBY7.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-HFEV7BC3.js";
 import "./chunk-BUGEQH7Q.js";
 import {
   CommonModule,

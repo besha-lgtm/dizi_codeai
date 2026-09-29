@@ -1,7 +1,4 @@
 import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-HFEV7BC3.js";
-import {
   animate,
   animation,
   style,
@@ -9,6 +6,9 @@ import {
   trigger,
   useAnimation
 } from "./chunk-3EAGWDPE.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-HFEV7BC3.js";
 import {
   ConnectedOverlayScrollHandler,
   DomHandler
@@ -971,4 +971,4 @@ export {
   Overlay,
   OverlayModule
 };
-//# sourceMappingURL=chunk-DZSPCPG7.js.map
+//# sourceMappingURL=chunk-L3GGTINP.js.map
