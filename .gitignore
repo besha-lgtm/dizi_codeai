@@ -1,0 +1,19 @@
+# Python
+.venv/
+.env
+__pycache__/
+*.pyc
+*.pyo
+
+# Runtime-generated backend files
+backend/inventory_*.json
+backend/review_*.json
+
+# Node / Angular
+node_modules/
+dist/
+.angular/
+
+# OS
+.DS_Store
+Thumbs.db

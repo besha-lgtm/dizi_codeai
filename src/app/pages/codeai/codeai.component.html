@@ -3,13 +3,11 @@
   <!-- SIDEBAR -->
   <app-sidebar></app-sidebar>
 
-
   <!-- RIGHT SECTION -->
   <div class="right-section">
 
     <!-- HEADER -->
     <app-header></app-header>
-
 
     <!-- CONTENT -->
     <div class="content-area">
@@ -39,7 +37,6 @@
             (click)="toggleChat()">
 
             <i class="pi pi-comments"></i>
-
             Start Code Audit
 
           </button>
@@ -58,18 +55,13 @@
 
             <div>
               <h3>Code AI Auditor</h3>
-
-              <span>
-                AI-powered code review
-              </span>
+              <span>AI-powered code review</span>
             </div>
 
             <button
               class="close-btn"
               (click)="toggleChat()">
-
               <i class="pi pi-times"></i>
-
             </button>
 
           </div>
@@ -85,68 +77,104 @@
               *ngFor="let message of messages"
               [ngClass]="message.sender">
 
-              <div class="message-avatar">
 
+              <!-- Avatar -->
+              <div class="message-avatar">
                 <i
                   class="pi"
-                  [ngClass]="
-                    message.sender === 'ai'
-                    ? 'pi-sparkles'
-                    : 'pi-user'
-                  ">
+                  [ngClass]="message.sender === 'ai' ? 'pi-sparkles' : 'pi-user'">
                 </i>
-
               </div>
 
+              <!-- Content -->
               <div class="message-content">
 
+                <!-- Regular text bubble -->
                 <div
-                  *ngIf="message.text"
+                  *ngIf="message.text && !message.isReport"
                   class="message-text">
-
                   {{ message.text }}
-
                 </div>
 
-
-                <!-- OPTIONS -->
+                <!-- Quick-option buttons -->
                 <div
                   class="options"
                   *ngIf="message.options">
-
                   <button
                     *ngFor="let option of message.options"
                     (click)="selectOption(option)"
                     class="option-btn">
-
                     {{ option }}
-
                   </button>
+                </div>
+
+
+                <!-- ─── REPORT CARD ─── -->
+                <div
+                  class="report-card"
+                  *ngIf="message.isReport && message.reportData">
+
+                  <div class="report-header">
+                    <i class="pi pi-list-check"></i>
+                    <span>Detailed Findings</span>
+                  </div>
+
+                  <!-- One block per file that has issues -->
+                  <ng-container *ngFor="let file of message.reportData">
+                    <div
+                      class="report-file"
+                      *ngIf="file.status === 'issues_found'">
+
+                      <div class="file-name">
+                        <i class="pi pi-file-edit"></i>
+                        {{ file.file_name }}
+                        <span class="file-path">{{ file.file_path }}</span>
+                        <span class="issue-count">{{ file.issues.length }} issue(s)</span>
+                      </div>
+
+                      <div
+                        class="issue-row"
+                        *ngFor="let iss of file.issues">
+
+                        <div class="issue-meta">
+                          <span class="category-badge">{{ iss.category }}</span>
+                          <span class="line-badge" *ngIf="iss.line">Line {{ iss.line }}</span>
+                        </div>
+
+                        <div class="issue-text">
+                          <strong>Issue:</strong> {{ iss.issue }}
+                        </div>
+
+                        <div class="rec-text">
+                          <strong>Fix:</strong> {{ iss.recommendation }}
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </ng-container>
 
                 </div>
+                <!-- ─── END REPORT CARD ─── -->
 
               </div>
 
             </div>
 
 
-            <!-- TYPING -->
+            <!-- TYPING INDICATOR -->
             <div
               class="message ai"
               *ngIf="isTyping">
 
               <div class="message-avatar">
-
                 <i class="pi pi-sparkles"></i>
-
               </div>
 
               <div class="typing">
-
                 <span></span>
                 <span></span>
                 <span></span>
-
               </div>
 
             </div>
@@ -165,14 +193,11 @@
               placeholder="Type your answer..."
               class="chat-input">
 
-
             <button
               class="send-btn"
               (click)="sendMessage()"
               [disabled]="!userInput.trim() || isTyping">
-
               <i class="pi pi-send"></i>
-
             </button>
 
           </div>
